@@ -1,0 +1,7 @@
+package com.exceptions;
+
+public class NoCustomerFound extends Exception{
+	
+	public class NoCustomerFound
+
+}

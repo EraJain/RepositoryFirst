@@ -1,0 +1,22 @@
+package com.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.constFiles.UserState;
+
+@Entity
+@Table(name="Web_User")
+public class WebUser {
+
+	@Id
+	@Column(name = "Login_Id", nullable = false)
+	private String loginId;
+	
+	@Column(name = "Password", nullable = false)
+	private String password;
+	private UserState userState;
+	
+}

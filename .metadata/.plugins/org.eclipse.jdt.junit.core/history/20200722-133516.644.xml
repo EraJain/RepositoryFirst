@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestExampl" project="CodeChallenge" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.example.demo.TestExampl" time="0.295" displayname="TestExampl" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.TestExampl]">
+    <testcase name="contextLoads" classname="com.example.demo.TestExampl" time="0.295" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.TestExampl]/[method:contextLoads()]"/>
+  </testsuite>
+</testrun>

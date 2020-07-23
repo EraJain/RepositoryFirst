@@ -1,0 +1,127 @@
+package com.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
+
+import com.beans.Customer;
+import com.exception.DaoException;
+import com.exception.NoCustomerFound;
+
+public class GenericDao {
+
+	public void add(Customer customer) {
+
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
+		SessionFactory sf = meta.getSessionFactoryBuilder().build();
+		Session session = sf.openSession();
+		Transaction t = session.beginTransaction();
+
+		try {
+			session.save(customer);
+			t.commit();
+			/**
+			 * Logging
+			 */
+			System.out.println("successfully saved" + customer);
+		} finally {
+			sf.close();
+			session.close();
+		}
+	}
+
+	public Customer get(Customer customer) throws NoCustomerFound, DaoException {
+
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
+		SessionFactory sf = meta.getSessionFactoryBuilder().build();
+		Session session = sf.openSession();
+		Transaction t = session.beginTransaction();
+
+		try {
+			String hql = "from Customer where id =" + customer.getId();
+			Query query = session.createQuery(hql);
+			List<Customer> results = query.list();
+			if (results.isEmpty()) {
+				throw new NoCustomerFound("No customer found with this id");
+			} else if (results.size() == 1) {
+				return results.get(0);
+			} else {
+				throw new DaoException("Multiple cust found");
+			}
+		} finally {
+			sf.close();
+			session.close();
+		}
+	}
+
+	public void update(Customer customer) {
+
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
+		SessionFactory sf = meta.getSessionFactoryBuilder().build();
+		Session session = sf.openSession();
+		Transaction t = session.beginTransaction();
+
+		try {
+			session.update(customer);
+			t.commit();
+			/**
+			 * Logging
+			 */
+			System.out.println("updated saved" + customer);
+		} finally {
+			sf.close();
+			session.close();
+		}
+	}
+	
+	public void delete(Customer customer) {
+
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
+		SessionFactory sf = meta.getSessionFactoryBuilder().build();
+		Session session = sf.openSession();
+		Transaction t = session.beginTransaction();
+
+		try {
+			session.delete(customer);
+			t.commit();
+			/**
+			 * Logging
+			 */
+			System.out.println("Deleted successfully" + customer);
+		} finally {
+			sf.close();
+			session.close();
+		}
+	}
+	
+	public List<Customer> getForFirstName(String firstName) throws NoCustomerFound, DaoException {
+
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
+		SessionFactory sf = meta.getSessionFactoryBuilder().build();
+		Session session = sf.openSession();
+		Transaction t = session.beginTransaction();
+
+		try {
+			String hql = "from Customer where firstName =" firstName;
+			Query query = session.createQuery(hql);
+			List<Customer> results = query.list();
+			return results;
+		} finally {
+			sf.close();
+			session.close();
+		}
+	}
+
+}

@@ -1,0 +1,71 @@
+package com.beans;
+
+import java.time.Instant;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.apache.tomcat.jni.Address;
+
+@Entity
+@Table(name="Customer")
+public class Account {
+
+	@Id
+	@Column(name = "Id", nullable = false)
+	private String id;
+	
+	@Column(name = "Billing_Address", nullable = false)
+	private Address billingAddress;
+	
+	@Column(name = "Is_Closed", nullable = false)
+	private boolean isClosed;
+	
+	@Column(name = "Date_Open", nullable = false)
+	private Instant dateOpen;
+	
+	@Column(name = "Date_Closed", nullable = false)
+	private Instant dateClosed;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Address getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(Address billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+
+	public boolean isClosed() {
+		return isClosed;
+	}
+
+	public void setClosed(boolean isClosed) {
+		this.isClosed = isClosed;
+	}
+
+	public Instant getDateOpen() {
+		return dateOpen;
+	}
+
+	public void setDateOpen(Instant dateOpen) {
+		this.dateOpen = dateOpen;
+	}
+
+	public Instant getDateClosed() {
+		return dateClosed;
+	}
+
+	public void setDateClosed(Instant dateClosed) {
+		this.dateClosed = dateClosed;
+	}
+}

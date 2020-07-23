@@ -1,0 +1,42 @@
+package com.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.beans.Customer;
+import com.exceptions.DAOException;
+import com.generic.GenericDao;
+
+@Repository
+public class CustomerDao extends GenericDao {
+
+	//Method to add customer
+	public void customerRegistration(Customer customer) throws DAOException{
+		try {
+			this.addCustomer(customer);
+		} catch (Exception e) {
+			//log the exception details
+			throw new DAOException(e.getLocalizedMessage());
+		}
+	}
+	
+	//method to find a customer
+	public Customer getCustomer(Customer customer) throws DAOException{
+		try {
+			return this.findCustomer(customer);
+		} catch (Exception e) {
+			//log the exception details
+			throw new DAOException(e.getLocalizedMessage());
+		}
+	}
+	
+	//method to update Customer details
+	public Customer modifyCustomer(Customer customer) throws DAOException{
+		try {
+			return this.findCustomer(customer);
+		} catch (Exception e) {
+			//log the exception details
+			throw new DAOException(e.getLocalizedMessage());
+		}
+	}
+
+}

@@ -1,0 +1,60 @@
+package com.beans;
+
+import java.time.Instant;
+
+import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Payment")
+public class Payment {
+
+	@Id
+	@Column(name = "Id", nullable = false)
+	@Generated(value = { "1" })
+	private String id;
+	
+	@Column(name = "payment_Date", nullable = false)
+	private Instant paymentDate;
+	
+	@Column(name = "Amount_Paid", nullable = false)
+	private float totalAmtPaid;
+	
+	@Column(name = "Details", nullable = false)
+	private String details;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Instant getPaymentDate() {
+		return paymentDate;
+	}
+
+	public void setPaymentDate(Instant paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+
+	public float getTotalAmtPaid() {
+		return totalAmtPaid;
+	}
+
+	public void setTotalAmtPaid(float totalAmtPaid) {
+		this.totalAmtPaid = totalAmtPaid;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+}

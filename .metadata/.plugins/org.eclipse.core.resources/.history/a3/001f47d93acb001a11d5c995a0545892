@@ -1,0 +1,8 @@
+package com.beans;
+
+
+@Entity
+@Table
+public class Customer {
+
+}

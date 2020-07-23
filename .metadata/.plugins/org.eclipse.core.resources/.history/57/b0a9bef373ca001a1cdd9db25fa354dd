@@ -1,0 +1,13 @@
+package com.beans;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Customer")
+public class Customer {
+
+	private String id;
+	private String address;
+	private Long phoneNumber;
+}

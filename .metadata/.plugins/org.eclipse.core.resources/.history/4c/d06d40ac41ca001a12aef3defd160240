@@ -1,0 +1,24 @@
+package com.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.bean.Customer;
+import com.exception.GenericException;
+
+@Repository
+public class CustomerDao extends GenericDao{
+	
+	public List<Customer> customerRegistration(Customer customer) throws SQLException{
+		try {
+			
+		}catch(Exception ex) {
+			throw GenericException(ex,"Exception in dao");
+		}
+		this.add(customer);
+		return null;
+	}
+
+}

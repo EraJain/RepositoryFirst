@@ -1,0 +1,15 @@
+package com.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+import org.apache.tomcat.jni.Address;
+
+public class Account {
+
+	@Id
+	@Column(name = "Id", nullable = false)
+	private String id;
+	private Address billingAddress;
+	private boolean isClosed;
+}

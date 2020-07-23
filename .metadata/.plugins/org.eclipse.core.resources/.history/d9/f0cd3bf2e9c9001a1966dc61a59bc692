@@ -1,0 +1,6 @@
+package com.example.bean;
+
+@Controller 
+public class Customer {
+
+}

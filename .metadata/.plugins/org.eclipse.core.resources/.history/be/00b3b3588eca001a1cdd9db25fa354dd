@@ -1,0 +1,8 @@
+package com.dao;
+
+import com.generic.GenericDao;
+
+@Repository
+public class CustomerDao extends GenericDao{
+
+}

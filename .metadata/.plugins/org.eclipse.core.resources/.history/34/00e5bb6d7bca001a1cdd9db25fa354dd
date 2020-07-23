@@ -1,0 +1,15 @@
+package com.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+@RequestMapping("/customer")
+public class CustomerController {
+	
+	@ResponseBody
+	@PostMapping("/addCustomer")
+	public void addCustomer(@RequestParam(name="customer" Customer customer) {}
+
+}

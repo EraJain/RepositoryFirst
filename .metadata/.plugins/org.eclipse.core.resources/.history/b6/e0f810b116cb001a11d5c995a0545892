@@ -1,0 +1,50 @@
+package com.services;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.beans.Customer;
+import com.beans.Order;
+import com.dao.CustomerDao;
+
+@Service
+public class CustomerServices {
+	
+	@Autowired
+	CustomerDao dao;
+	
+	 /**
+	   * Method to add a new Customer
+	   * @param customer All the customer details
+	   * @return 
+	   */
+	@Transactional
+	synchronized public void addCustomer(Customer customer) throws ServiceException{
+		try {
+			dao.customerRegistration(customer);
+		}catch(Exception de) {
+			//log for exception
+			throw new ServiceException(de.getLocalizedMessage());
+		}
+		
+	}
+
+	
+	@Transactional
+	synchronized public void addOrder(Customer customer, List<Order> orders) {
+		try {
+			Customer dbCust = dao.getCustomer(customer);
+			dbCust.getListOfOrders().addAll(orders);
+			dao.modifyCustomer(customer);
+		}catch(Exception de) {
+			//log for exception
+			throw new ServiceException(de.getLocalizedMessage());
+		}
+	}
+
+}

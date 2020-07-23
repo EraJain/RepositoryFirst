@@ -1,0 +1,48 @@
+package com.example.demo;
+
+import java.time.Instant;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.beans.Customer;
+import com.dao.CustomerDao;
+import com.exception.CustomeServiceException;
+import com.service.CustomerService;
+
+@RunWith(MockitoJUnitRunner.class)
+public class CustomerServiceTest {
+
+	@InjectMocks
+	private CustomerService customerService = new CustomerService();
+
+	@Mock
+	private final Customer customer = new Customer();
+	
+	@Mock
+	private final CustomerDao dao = new CustomerDao();
+
+	
+	/**
+	 * Test for addCustomer
+	 * @throws CustomeServiceException 
+	 * */
+	@Test
+	void addCustomerTest() throws CustomeServiceException {
+		this.setCustDetails();
+		customerService.addCustomer(customer);
+	}
+	
+	private Customer setCustDetails() {
+		customer.setFirstName("Era");
+		customer.setFirstName("Jain");
+		customer.setDate(Instant.now());
+		customer.setEmail("erajain2010@gmail.com");
+		customer.setPassword("abcdefg@2020");
+		return null;
+	}
+
+}

@@ -1,0 +1,25 @@
+package com.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.beans.Customer;
+import com.dao.CustomerDao;
+import com.exceptions.DAOException;
+
+@Service
+public class CustomerServices {
+	
+	@Autowired
+	CustomerDao dao;
+	
+	public void addCustomer(Customer customer) {
+		try {
+			dao.customerRegistration(customer);
+		}catch(Exception de) {
+			//log for exception
+		}
+		
+	}
+
+}

@@ -1,0 +1,22 @@
+package com.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Customer")
+public class Customer {
+
+	@Id
+	@Column(name = "Id", nullable = false)
+	private String id;
+	
+	@Column(name = "Address", nullable = false, length = 512)
+	private String address;
+	
+	@Column(name = "Address", nullable = false, length = 512)
+	private Long phoneNumber;
+	private String email;
+}

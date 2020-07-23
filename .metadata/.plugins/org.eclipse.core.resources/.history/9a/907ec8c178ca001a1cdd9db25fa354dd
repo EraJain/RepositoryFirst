@@ -1,0 +1,10 @@
+package com.beans;
+
+import org.apache.tomcat.jni.Address;
+
+public class Account {
+
+	private String id;
+	private Address billingAddress;
+	private boolean isClosed;
+}

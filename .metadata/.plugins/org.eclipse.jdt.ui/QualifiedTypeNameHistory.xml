@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="com.sun.istack.NotNull"/>
+<fullyQualifiedTypeName name="javax.persistence.Column"/>
+<fullyQualifiedTypeName name="javax.persistence.Table"/>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration"/>
+<fullyQualifiedTypeName name="com.dao.GenericDao"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="com.exception.GenericException"/>
+<fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+<fullyQualifiedTypeName name="org.hibernate.Session"/>
+<fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+<fullyQualifiedTypeName name="ch.qos.logback.core.boolex.Matcher"/>
+<fullyQualifiedTypeName name="java.util.regex.Matcher"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.controller.CustomerController"/>
+<fullyQualifiedTypeName name="org.mockito.junit.MockitoJUnitRunner"/>
+<fullyQualifiedTypeName name="org.junit.runner.RunWith"/>
+<fullyQualifiedTypeName name="org.mockito.InjectMocks"/>
+<fullyQualifiedTypeName name="com.service.CustomerService"/>
+<fullyQualifiedTypeName name="com.beans.Customer"/>
+<fullyQualifiedTypeName name="org.mockito.Mock"/>
+<fullyQualifiedTypeName name="com.dao.CustomerDao"/>
+<fullyQualifiedTypeName name="java.time.Instant"/>
+<fullyQualifiedTypeName name="com.exception.CustomeServiceException"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="org.mockito.Mockito"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+</qualifiedTypeNameHistroy>

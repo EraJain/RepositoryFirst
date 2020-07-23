@@ -1,0 +1,58 @@
+package com.generic;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import com.beans.Customer;
+
+public class GenericDao {
+
+	public void addCustomer(Customer customer) {
+
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
+		SessionFactory sf = meta.getSessionFactoryBuilder().build();
+		Session session = sf.openSession();
+		Transaction t = session.beginTransaction();
+		
+		try {
+			session.save(customer);
+			t.commit();
+			/**
+			 * Logging
+			 * */
+			System.out.println("successfully saved"+customer);
+		}finally {
+			sf.close();
+			session.close();
+		}
+	}
+
+	public void getCustomer(Customer customer) {
+
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
+		SessionFactory sf = meta.getSessionFactoryBuilder().build();
+		Session session = sf.openSession();
+		Transaction t = session.beginTransaction();
+		
+		try {
+			String hql = "from Customer where id ="+customer.getId();
+			session.createQuery(hql);
+			t.commit();
+			/**
+			 * Logging
+			 * */
+			System.out.println("successfully saved"+customer);
+		}finally {
+			sf.close();
+			session.close();
+		}
+	}
+
+}

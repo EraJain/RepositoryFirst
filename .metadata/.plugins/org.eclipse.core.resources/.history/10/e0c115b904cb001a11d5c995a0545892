@@ -1,0 +1,39 @@
+package com.services;
+
+import java.util.List;
+
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.beans.Customer;
+import com.beans.Order;
+import com.dao.CustomerDao;
+
+@Service
+public class CustomerServices {
+	
+	@Autowired
+	CustomerDao dao;
+	
+	public void addCustomer(Customer customer) throws ServiceException{
+		try {
+			dao.customerRegistration(customer);
+		}catch(Exception de) {
+			//log for exception
+			throw new ServiceException(de.getLocalizedMessage());
+		}
+		
+	}
+
+	public void addOrder(Customer customer, List<Order> orders) {
+		try {
+			Customer dbCust = dao.getCustomer(customer);
+			dbCust.setListOfOrders(orders);
+		}catch(Exception de) {
+			//log for exception
+			throw new ServiceException(de.getLocalizedMessage());
+		}
+	}
+
+}

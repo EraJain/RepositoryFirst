@@ -1,0 +1,9 @@
+package com.exceptions;
+
+public class DAOException extends Exception{
+	
+	public DAOException() {
+		
+	}
+
+}

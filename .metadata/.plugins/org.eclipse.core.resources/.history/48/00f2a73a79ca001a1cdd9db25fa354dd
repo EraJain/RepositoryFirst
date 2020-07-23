@@ -1,0 +1,12 @@
+package com.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+public class Payment {
+
+	@Id
+	@Column(name = "Id", nullable = false)
+	private String id;
+	
+}

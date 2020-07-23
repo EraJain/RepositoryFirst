@@ -1,0 +1,14 @@
+package com.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class CustomerController {
+	
+	@ResponseBody
+	public String customerRegistration() {
+		return  null;
+	}
+
+}

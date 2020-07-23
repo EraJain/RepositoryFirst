@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+C:\Users\era.jain\Documents\workspace-sts\CodeChallenge\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3078204073.index

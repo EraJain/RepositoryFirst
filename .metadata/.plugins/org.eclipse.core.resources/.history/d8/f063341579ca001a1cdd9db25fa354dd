@@ -1,0 +1,27 @@
+package com.beans;
+
+import java.time.Instant;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+import org.apache.tomcat.jni.Address;
+
+public class Account {
+
+	@Id
+	@Column(name = "Id", nullable = false)
+	private String id;
+	
+	@Column(name = "Billing_Address", nullable = false)
+	private Address billingAddress;
+	
+	@Column(name = "Is_Closed", nullable = false)
+	private boolean isClosed;
+	
+	@Column(name = "Date_Open", nullable = false)
+	private Instant dateOpen;
+	
+	@Column(name = "Date_Closed", nullable = false)
+	private Instant dateClosed;
+}

@@ -1,0 +1,16 @@
+package com.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.example.bean.Customer;
+
+@Repository
+public class CustomerDao extends GenericDao{
+	
+	public List<Customer> customerRegistration(Customer customer){
+		return null;
+	}
+
+}

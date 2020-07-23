@@ -1,0 +1,15 @@
+package com.junits;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+public class CustomerControllerTest{
+	
+	@Test
+	public void test() {
+		assertEquals("msg",true);
+//		System.out.println("hello");
+	}
+
+}

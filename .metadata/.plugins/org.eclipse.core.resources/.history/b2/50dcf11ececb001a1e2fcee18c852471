@@ -1,0 +1,7 @@
+package com.junits;
+
+import junit.framework.TestCase;
+
+public class CustomerControllerTest extends TestCase  {
+
+}

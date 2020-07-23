@@ -1,0 +1,117 @@
+package com.service;
+
+import javax.transaction.Transactional;
+
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.beans.Customer;
+import com.dao.CustomerDao;
+
+@Service
+@Qualifier("customerService")
+public class CustomerService {
+
+	@Autowired
+	public CustomerDao dao;
+
+	/**
+	 * Method to add a new Customer
+	 * 
+	 * @throws ServiceException
+	 * @param customer All the customer details
+	 * @return
+	 */
+	@Transactional
+	synchronized public void addCustomer(Customer customer) throws ServiceException {
+		try {
+			dao.customerRegistration(customer);
+		} catch (Exception de) {
+			// log for exception
+			throw new ServiceException(de.getLocalizedMessage());
+		}
+
+	}
+
+	/**
+	 * Method to get the Customer
+	 * 
+	 * @throws ServiceException
+	 * @param customer : for customer id
+	 * @return
+	 * @return
+	 */
+	@Transactional
+	synchronized public Customer getCustomer(Customer customer) throws ServiceException {
+		try {
+			return dao.getCustomer(customer);
+		} catch (Exception de) {
+			// log for exception
+			throw new ServiceException(de.getLocalizedMessage());
+		}
+
+	}
+
+	/**
+	 * Method to modify the Customer
+	 * 
+	 * @throws ServiceException
+	 * @param customer : for customer id, and details
+	 * @return
+	 * @return
+	 */
+	@Transactional
+	synchronized public void modifyCustomer(Customer customer) throws ServiceException {
+		try {
+			Customer dbCustomer =  dao.getCustomer(customer);
+			dbCustomer = this.modifyValues(customer, dbCustomer);
+			dao.modifyCustomer(dbCustomer);
+		} catch (Exception de) {
+			// log for exception
+			throw new ServiceException(de.getLocalizedMessage());
+		}
+
+	}
+	
+	private Customer modifyValues(Customer customer,Customer dbCustomer) {
+		if(!customer.getFirstName().isEmpty()) {
+			dbCustomer.setFirstName(customer.getFirstName());
+		}
+		if(!customer.getLastName().isEmpty()) {
+			dbCustomer.setLastName(customer.getLastName());
+		}
+		if(customer.getDate() != null) {
+			dbCustomer.setDate(customer.getDate());
+		}
+		if(customer.getEmail().isEmpty()) {
+			dbCustomer.setEmail(customer.getEmail());
+		}
+		if(customer.getPassword() != null) {
+			dbCustomer.setPassword(customer.getPassword());
+		}
+		return dbCustomer;
+	}
+	
+	/**
+	 * Method to remove the Customer
+	 * 
+	 * @throws ServiceException
+	 * @param customer : for customer id
+	 * @return
+	 * @return
+	 */
+	@Transactional
+	synchronized public void removeCustomer(Customer customer) throws ServiceException {
+		try {
+			Customer dbCustomer =  dao.getCustomer(customer);
+			dbCustomer = this.modifyValues(customer, dbCustomer);
+			dao.modifyCustomer(dbCustomer);
+		} catch (Exception de) {
+			// log for exception
+			throw new ServiceException(de.getLocalizedMessage());
+		}
+
+	}
+}

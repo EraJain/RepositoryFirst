@@ -1,0 +1,96 @@
+package com.example.demo;
+
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.beans.Customer;
+import com.dao.CustomerDao;
+import com.exception.CustomeServiceException;
+import com.service.CustomerService;
+
+@RunWith(MockitoJUnitRunner.class)
+public class CustomerServiceTest {
+
+	@InjectMocks
+	private CustomerService customerService = new CustomerService();
+
+	@Mock
+	private Customer customer = new Customer();
+	
+	@Mock
+	private CustomerDao dao = new CustomerDao();
+	
+	/**
+	 * Test for addCustomer
+	 * Positive Test Case
+	 * @throws CustomeServiceException 
+	 * */
+	@Test
+	void addCustomerTest() throws CustomeServiceException,Exception {
+		this.setCustDetails();
+		doNothing().when(mock(CustomerDao.class)).add(customer);
+		when(dao.getForFirstName(Mockito.anyString())).thenReturn(new ArrayList<Customer>());
+		customerService.addCustomer(customer);
+		
+		verify(customerService.passwordValidation(Mockito.anyString()),times(1));
+		verify(dao.getForFirstName(Mockito.anyString()),times(1));
+	}
+	
+	/**
+	 * Test for addCustomer : for invalid password
+	 * @throws CustomeServiceException 
+	 * */
+	@Test
+	void addCustomerTestPassword() throws CustomeServiceException,Exception {
+		this.setCustDetails();
+		customer.setPassword("123");
+		doNothing().when(mock(CustomerDao.class)).add(customer);
+		customerService.addCustomer(customer);
+		
+		verify(customerService.passwordValidation(Mockito.anyString()),times(1));
+		verify(dao.getForFirstName(Mockito.anyString()),times(0));
+	}
+	
+	/**
+	 * Test for addCustomer : for multiple first name
+	 * @throws CustomeServiceException 
+	 * */
+	@Test
+	void addCustomerFirstNameTest() throws CustomeServiceException,Exception {
+		List<Customer> list = new ArrayList<Customer>();
+		list.add(new Customer());
+		this.setCustDetails();
+		doNothing().when(mock(CustomerDao.class)).add(customer);
+		when(dao.getForFirstName(Mockito.anyString())).thenReturn(list);
+		customerService.addCustomer(customer);
+		
+		verify(customerService.passwordValidation(Mockito.anyString()),times(1));
+		verify(dao.getForFirstName(Mockito.anyString()),times(1));
+		verify(dao.add(new Customer()),times(1));
+	}
+	
+	
+	private Customer setCustDetails() {
+		customer.setFirstName("Era");
+		customer.setLastName("Jain");
+		customer.setDate(Instant.now());
+		customer.setEmail("erajain2010@gmail.com");
+		customer.setPassword("Abcdefg@2020");
+		return null;
+	}
+
+}

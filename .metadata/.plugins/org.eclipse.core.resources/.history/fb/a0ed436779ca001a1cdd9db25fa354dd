@@ -1,0 +1,22 @@
+package com.beans;
+
+import java.time.Instant;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Payment")
+public class Payment {
+
+	@Id
+	@Column(name = "Id", nullable = false)
+	private String id;
+	
+	@Column(name = "payment_Date", nullable = false)
+	private Instant paymentDate;
+	
+	private float totalAmtPaid;
+}

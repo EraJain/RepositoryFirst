@@ -1,0 +1,22 @@
+package com.services;
+
+import org.springframework.stereotype.Service;
+
+import com.beans.Customer;
+import com.exceptions.DAOException;
+
+@Service
+public class CustomerServices {
+	
+	public void addCustomer(Customer customer) {
+		try {
+			
+		}catch(Exception de) {
+			if(de instanceof DAOException) {
+				
+			}
+		}
+		
+	}
+
+}

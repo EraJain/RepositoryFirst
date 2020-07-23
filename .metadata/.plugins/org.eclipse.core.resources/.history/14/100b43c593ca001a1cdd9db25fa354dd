@@ -1,0 +1,15 @@
+package com.beans;
+
+import java.time.Instant;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Shopping_Cart")
+public class ShoppingCart {
+	
+	@Column
+	private Instant createdDate;
+
+}

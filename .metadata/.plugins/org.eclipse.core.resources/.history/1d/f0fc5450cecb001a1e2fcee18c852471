@@ -1,0 +1,12 @@
+package com.junits;
+
+import junit.framework.TestCase;
+
+public class CustomerControllerTest extends TestCase  {
+	
+	@Test
+	public void test() {
+		
+	}
+
+}
